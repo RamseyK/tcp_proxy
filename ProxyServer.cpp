@@ -248,8 +248,6 @@ void ProxyServer::handleClient(Client *cl) {
  * @param buf Pointer to ByteBuffer containing data recv'd
  */
 void ProxyServer::handleData(Client *cl, ByteBuffer *buf) {
-	// SSL decrypt here
-
 	// Simply forward the recieved data to the ProxyClient
 	ProxyClient* pCl = cl->getProxyClient();
 	pCl->sendData(buf);
@@ -269,8 +267,6 @@ void ProxyServer::sendData(Client* cl, ByteBuffer* buf) {
 	// Get raw data
 	byte* pData = new byte[dataLen];
 	buf->getBytes(pData, dataLen);
-
-	// SSL encrypt here
 
 	// Solution to deal with partials sends...loop till totalSent matches dataLen
 	while(totalSent < dataLen) {
