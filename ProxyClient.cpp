@@ -125,9 +125,6 @@ ByteBuffer* ProxyClient::clientProcess() {
 		// Usable data was received. Create a new instance of a ByteBuffer, pass it the data from the wire
         ByteBuffer *buf = new ByteBuffer((byte *)pData, (unsigned int)lenRecv);
 
-		// Delete pData from memory, no longer needed
-		delete [] pData;
-
 		// Pass the new ByteBuffer into the handler, return the output of the handler
 		retBuf = handleData(buf);
 	}
