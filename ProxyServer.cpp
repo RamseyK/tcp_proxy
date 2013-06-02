@@ -155,6 +155,7 @@ void ProxyServer::runServer() {
         fd_read = fd_master;
         
         // Populate fd_read with client & clientProxy descriptors that are ready to be read
+        // timeout param is NULL, select will block until there is data to be read
         if(select(fdmax+1, &fd_read, NULL, NULL, NULL) < 0)
             continue; // Nothing to be read
         
@@ -205,7 +206,7 @@ void ProxyServer::runServer() {
 
 /**
  * Handle Client
- * Recieve data from a client that has indicated (via select()) that it has data waiting. Pass recv'd data to handleRequest()
+ * Recieve data from a client that has indicated (via select()) that it has data waiting. Pass recv'd data to handleData()
  * Also detect any errors in the state of the socket
  *
  * @param cl Pointer to Client that sent the data

@@ -106,6 +106,7 @@ SOCKET ProxyClient::attemptConnect() {
 ByteBuffer* ProxyClient::clientProcess() {
 	size_t dataLen = SO_RCVBUF;
 	char *pData = new char[dataLen];
+	ByteBuffer *retBuf = NULL;
     
 	// Receive data on the wire into pData
 	/* TODO: Figure out what flags need to be set */
@@ -128,13 +129,13 @@ ByteBuffer* ProxyClient::clientProcess() {
 		delete [] pData;
 
 		// Pass the new ByteBuffer into the handler, return the output of the handler
-		return handleData(buf);
+		retBuf = handleData(buf);
 	}
 
 	if(pData != NULL)
 		delete [] pData;
 
-	return NULL;
+	return retBuf;
 }
 
 /**
@@ -145,7 +146,7 @@ ByteBuffer* ProxyClient::clientProcess() {
  * @return A processed ByteBuffer (SSL decrypted)
  */
 ByteBuffer* ProxyClient::handleData(ByteBuffer *buf) {
-	// SSL decrypt here
+	// Do processing here
 
 	return buf;
 }
@@ -164,7 +165,7 @@ void ProxyClient::sendData(ByteBuffer *buf){
 	byte* pData = new byte[dataLen];
 	buf->getBytes(pData, dataLen);
 
-	// SSL encrypt here
+	// Do any processing here
 
 	// Solution to deal with partials sends...loop till totalSent matches dataLen
 	while(totalSent < dataLen) {

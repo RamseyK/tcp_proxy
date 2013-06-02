@@ -16,8 +16,8 @@
    limitations under the License.
 */
 
-#ifndef sslproxy_ProxyServer_h
-#define sslproxy_ProxyServer_h
+#ifndef PROXYSERVER_H_
+#define PROXYSERVER_H_
 
 #include <iostream>
 #include <stdio.h>

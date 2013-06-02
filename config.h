@@ -16,8 +16,8 @@
    limitations under the License.
 */
 
-#ifndef sslproxy_config_h
-#define sslproxy_config_h
+#ifndef CONFIG_H_
+#define CONFIG_H_
 
 // Temporary configuration solution until I write a better method to pull these values from a config file
 

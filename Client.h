@@ -16,8 +16,8 @@
    limitations under the License.
 */
 
-#ifndef sslproxy_Client_h
-#define sslproxy_Client_h
+#ifndef CLIENT_H_
+#define CLIENT_H_
 
 #include <netinet/in.h>
 #include <arpa/inet.h>
